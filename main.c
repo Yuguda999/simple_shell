@@ -14,6 +14,10 @@ int main(void)
 {
 	char command[MAX_COMMAND_LENGTH];
 	char *args[MAX_ARGS];
+	
+	int i = 0;
+
+	char *token = strtok(command, " ");
 
 	while (1)
 	{
@@ -29,8 +33,6 @@ int main(void)
 		command[strcspn(command, "\n")] = '\0';
 
 		/* Tokenize the command and its arguments */
-		int i = 0;
-		char *token = strtok(command, " ");
 		while (token != NULL && i < MAX_ARGS - 1)
 		{
 			args[i++] = token;
