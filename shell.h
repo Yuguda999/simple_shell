@@ -8,8 +8,8 @@ void display_prompt(void);
 
 /**
  * run_command - Execute the given command.
- * @command: The command to execute.
+ * @args: Array of strings containing the command and its arguments.
  */
-void run_command(char *command);
+void run_command(char **args);
 
 #endif /* SHELL_H */

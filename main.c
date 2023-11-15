@@ -4,6 +4,7 @@
 #include "shell.h"
 
 #define MAX_COMMAND_LENGTH 100
+#define MAX_ARGS 10
 
 /**
  * main - Entry point for the simple shell program.
@@ -12,6 +13,7 @@
 int main(void)
 {
 	char command[MAX_COMMAND_LENGTH];
+	char *args[MAX_ARGS];
 
 	while (1)
 	{
@@ -26,7 +28,17 @@ int main(void)
 		/* Remove newline character */
 		command[strcspn(command, "\n")] = '\0';
 
-		run_command(command);
+		/* Tokenize the command and its arguments */
+		int i = 0;
+		char *token = strtok(command, " ");
+		while (token != NULL && i < MAX_ARGS - 1)
+		{
+			args[i++] = token;
+			token = strtok(NULL, " ");
+		}
+		args[i] = NULL; /* Ensure the last element is NULL for execvp */
+
+		run_command(args);
 	}
 
 	return (0);

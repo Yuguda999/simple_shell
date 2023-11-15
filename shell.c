@@ -17,9 +17,9 @@ void display_prompt(void)
 
 /**
  * run_command - Execute the given command.
- * @command: The command to execute.
+ * @args: Array of strings containing the command and its arguments.
  */
-void run_command(char *command)
+void run_command(char **args)
 {
 	pid_t pid = fork();
 
@@ -30,7 +30,7 @@ void run_command(char *command)
 	else if (pid == 0)
 	{
 		/* Child process */
-		execlp(command, command, (char *)NULL);
+		execvp(args[0], args);
 		perror("simple_shell");
 		exit(EXIT_FAILURE);
 	}
