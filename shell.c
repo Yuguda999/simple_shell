@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <string.h>
 #include "shell.h"
 
 /**
@@ -10,7 +11,7 @@
  */
 void display_prompt(void)
 {
-	printf("simple_shell $ ");
+	printf("#cisfun$ ");
 	fflush(stdout);
 }
 
